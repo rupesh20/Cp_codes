@@ -1,0 +1,3 @@
+1.subsequnce checking algo done(linear time complexity)
+2.all subsequence of a string (pending)
+3.power set algorithm

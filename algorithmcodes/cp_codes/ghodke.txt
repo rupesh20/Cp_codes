@@ -1,0 +1,136 @@
+//1.
+	#include <iostream>
+#include <fstream>
+#include <string>
+	using namespace std;
+
+		int main(){
+
+					string s;
+					int p,i,f=0,c=0,o=0;
+              ifstream file ("assignment1.txt");
+              if (file.is_open())
+              {
+                while ( getline (file,s) )
+                {
+                    i=0;
+                    while(s[i]!='\0'){
+                       p=(int)s[i];
+                       if(s[i]=='\t'){r++;}
+                            if(p==32){
+                                c++;
+                            }
+                                else{
+                                    o++;
+                                }
+                       i++;
+                    }
+                    f++;
+                }
+                file.close();
+              }
+
+
+              else cout << "Unable to open file";
+                     cout<<"characters"<<"    "<<o<<endl;
+                    cout<<"spaces"<<"        "<<c<<endl;
+                    cout<<"lines"<<"         "<<f<<endl;
+
+                        return 0;
+		}
+// 2.
+	#include <iostream>
+#include <fstream>
+#include <string>
+		using namespace std;
+			int main(){
+					string s;
+					int i,p,t=0;;
+						ifstream file("assignment1.txt");
+						ofstream newfile("assign5.txt");
+							if(file.is_open()){
+								while( getline (file,s) ){
+									i=0;
+									while(s[i]!='\0'){
+										p=(int)s[i];
+											if(p==102){
+												s[i]='_';
+											}
+											i++;
+									}
+									if(newfile.is_open()){
+                                        newfile<<s<<endl;}
+								}
+							}
+							else{
+								cout<<"go play somewhere else"<<endl;
+							}
+
+				return 0;
+
+			}
+// 3.
+		#include <iostream>
+#include <fstream>
+#include <string>
+
+	using namespace std;
+		int main()
+		{
+			string s1,s2;
+				ifstream file1 ("assignment1.txt");
+				ifstream file2 ("assign2.txt");
+				ofstream file3 ("mergefile.txt");
+					if(file1.is_open()&&file2.is_open()&&file3.is_open())
+					{
+						while(getline(file1,s1)&&getline(file2,s2))
+						{
+								file3<<s1<<"  "<<s2<<endl;
+						}
+					}	
+						else
+						{
+							cout<<"go and play somewhere else"<<endl;
+						}	
+			return 0;			
+		} 
+// 4. 
+	#include <iostream>
+	#include "math.h" //math.h niche hai
+	using namespace std;
+		int main(){
+			int n;
+				//pleaaaase enter number till 7
+			cin>>n;
+				cout<<factorial(n);
+			return 0;
+		}
+// 5.
+	#include <iostream>
+	#include <fstream>
+	#include <string>
+	using namespace std;
+		int main(){
+			string s;
+				ifstream file("assignment1.txt");
+				ofstream newfile("assign2.txt");
+					if(file.is_open()&&newfile.is_open()){
+						while(getline(file,s)){
+							newfile<<s<<endl;
+						}
+						file.close();
+						newfile.close();
+					}
+					return 0;
+		}
+
+// header file math.h
+#ifndef MATH_H
+#define MATH_H
+		using namespace std;
+			int factorial(int n){
+				if(n==0)return 0;
+				if(n==1)return 1;
+					return n*factorial(n-1);
+			}
+#endif			

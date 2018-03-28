@@ -1,0 +1,65 @@
+
+#include <bits/stdc++.h>
+#define II ({int a; scanf("%d", &a); a;})
+#define LL ({ll a; scanf("%lld", &a); a;})
+#define rep(i,n) for(int i=0;i<n;i++)
+#define ulli unsigned long long int
+#define lli long long int 
+
+#define READ(f) freopen(f, "r", stdin)
+#define WRITE(f) freopen(f, "w", stdout)
+
+#define PB(x) push_back(x)
+
+#define Max 100001
+
+using namespace std;
+int spf[Max];
+void sieve(){
+
+	spf[1]=1;
+
+	for(int i=2;i<Max;i++){
+		spf[i]=i;
+	}
+	for(int i=4;i<Max;i+=2){
+		spf[i]=2;
+	}
+	for(int i=3;i<Max;i++){
+		if(spf[i]==i){
+			for(int j=i*i;j<Max;j+=i){
+				if(spf[j]==j)
+					spf[j]=i;
+			}
+		}
+	}
+}
+
+
+lli euler(lli n){
+	
+	lli res,temp=n;
+	if(spf[n]==n){
+		return n;
+	}	
+	else{
+		while(n!=1){
+			res*=(1.0-1.0/spf[n]);	
+			n/=spf[n];
+		}
+		res=temp*res;
+	}
+	return res;
+}
+
+int main()
+{
+	lli t;
+	scanf("%lld",&t);
+	while(t--){
+		lli n;
+		scanf("%lld",&n);
+		cout<<euler(n)<<endl;
+	}	
+	return 0;
+}
